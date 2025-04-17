@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Simulador Financeiro</title>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="imagemLogo"></div>
+    </div>
+    <div class="container">
+        <div class="box1">
+            <h1>Simulador Financeiro</h1>
+            <label for="input_hec">Quantidade de hectares da fazenda</label>
+            <input type="text" id="input_hec">
+
+            <label for="input_prod">Produção da colheita de cacau(Em Kg)</label><br>
+            <input type="text" id="input_prod">
+
+            <label for="input_valorProd">Valor total de custo da Produção</label>
+            <input type="text" id="input_valorProd">
+
+            <label for="input_preco">Preço do cacau vendido(Por Kg)</label>
+            <input type="text" id="input_preco">
+
+            <button>Calcular</button>
+        </div>
+        <div class="box2">
+            <div class="btn">
+                <button id="btn_sem_sensor" onclick="calculo_sem_sensor()">Sem sensor</button>
+                <button id="btn_com_sensor" onclick="calculo_com_sensor()">Com sensor</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="script.js"></script>
