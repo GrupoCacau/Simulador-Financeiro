@@ -19,25 +19,26 @@
     <div class="container">
         <div class="box1">
             <h1>Simulador Financeiro</h1>
-            <label for="input_hec">Quantidade de hectares da fazenda</label>
-            <input type="text" id="input_hec">
+            <label for="input_hectares">Quantidade de hectares da fazenda</label>
+            <input type="text" id="input_hectares">
 
-            <label for="input_prod">Produção da colheita de cacau(Em Kg)</label><br>
-            <input type="text" id="input_prod">
+            <label for="input_producaoColheita">Produção da colheita de cacau(Em Kg)</label><br>
+            <input type="text" id="input_producaoColheita">
 
-            <label for="input_valorProd">Valor total de custo da Produção</label>
-            <input type="text" id="input_valorProd">
+            <label for="input_custoProducao">Valor total de custo da Produção</label>
+            <input type="text" id="input_custoProducao">
 
-            <label for="input_preco">Preço do cacau vendido(Por Kg)</label>
-            <input type="text" id="input_preco">
+            <label for="input_precoKg">Preço do cacau vendido(Por Kg)</label>
+            <input type="text" id="input_precoKg">
 
-            <button>Calcular</button>
+            <button id="btn_calcular" onclick="calcular()">Calcular</button>
         </div>
         <div class="box2">
             <div class="btn">
                 <button id="btn_sem_sensor" onclick="calculo_sem_sensor()">Sem sensor</button>
                 <button id="btn_com_sensor" onclick="calculo_com_sensor()">Com sensor</button>
             </div>
+            <div id="div_mensagem"></div>
         </div>
     </div>
 </body>
