@@ -36,8 +36,8 @@ function calcular() {
 
     // Com o Projeto
     rendaBrutaProjeto = (producao * 1.3) * preco;
-    rendaLiquidaProjeto = rendaBrutaProjeto - (custo * 0.75);
-    rendaHectareProjeto = ((producao * 1.3) / hectares) * preco - ((custo * 0.75) / hectares);
+    rendaLiquidaProjeto = rendaBrutaProjeto - (custo * 0.77);
+    rendaHectareProjeto = ((producao * 1.3) / hectares) * preco - ((custo * 0.77) / hectares);
 
     producaoPorHectare = producao / hectares;
     producaoPorHectareProjeto = (producao * 1.3) / hectares;
@@ -45,30 +45,6 @@ function calcular() {
     mediaProducao = "";
     mediaProducaoProjeto = "";
 
-    // Classificação da produtividade
-    if (producaoPorHectare < 300) {
-        mediaProducao = "Produtividade muito baixa na plantação!";
-    } else if (producaoPorHectare <= 500) {
-        mediaProducao = "Baixa produtividade da plantação!";
-    } else if (producaoPorHectare <= 1200) {
-        mediaProducao = "Média produtividade da plantação!";
-    } else if (producaoPorHectare <= 2500) {
-        mediaProducao = "Alta produtividade da plantação!";
-    } else {
-        mediaProducao = "Altíssima produtividade da plantação!";
-    }
-
-    if (producaoPorHectareProjeto < 300) {
-        mediaProducaoProjeto = "Produtividade muito baixa na plantação!";
-    } else if (producaoPorHectareProjeto <= 500) {
-        mediaProducaoProjeto = "Baixa produtividade da plantação!";
-    } else if (producaoPorHectareProjeto <= 1200) {
-        mediaProducaoProjeto = "Média produtividade da plantação!";
-    } else if (producaoPorHectareProjeto <= 2500) {
-        mediaProducaoProjeto = "Alta produtividade da plantação!";
-    } else {
-        mediaProducaoProjeto = "Altíssima produtividade da plantação!";
-    }
 
     if (hectares <= 75) {
         calculo_sem_sensor();
@@ -94,7 +70,7 @@ function calculo_com_sensor() {
 
             <p>A produção que era <strong>${producao} Kg</strong> teve um aumento de <strong>30%</strong>, totalizando <strong>${(producao * 1.3).toLocaleString('pt-BR')}</strong> Kg.</p><br>
 
-            <p>O custo da produção que era <strong>R$${custo.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> teve uma redução de <strong>25%</strong>, totalizando <strong>R$${(custo * 0.75).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>.</p><br>
+            <p>O custo da produção que era <strong>R$${custo.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> teve uma redução de <strong>23%</strong>, totalizando <strong>R$${(custo * 0.75).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>.</p><br>
 
             <p>A renda líquida que era <strong>R$${rendaLiquida.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> foi para <strong>R$${rendaLiquidaProjeto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>, aumentando <strong>R$${(rendaLiquidaProjeto - rendaLiquida).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>.</p><br>
 
@@ -105,8 +81,44 @@ function calculo_com_sensor() {
             <p>Com custo de operação de <strong>R$${(custo * 0.75).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> sua colheita totalizou <strong>R$${rendaLiquidaProjeto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> de renda líquida.</p><br>
 
             <p>Cada Hectare rendeu <strong>R$${rendaHectareProjeto.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>.</p><br>
+            
+            <p><strong>Classificação da produção por hectares:</strong></p>
 
-            <p><strong>${mediaProducaoProjeto}</strong></p>`;
+            <div class="classificacao">
+                <div class="container">
+                    <div class="class" id="class01"></div>
+                    <div class="class" id="class02"></div>
+                    <div class="class" id="class03"></div>
+                    <div class="class" id="class04"></div>
+                    <div class="class" id="class05"></div>
+                </div>
+                <div class="numeros">
+                     <span>0 - 300</span>
+                    <span>300 - 500</span>
+                    <span>500 - 1200</span>
+                    <span>1200 - 2500</span>
+                    <span>acima de 1250</span>
+                    </div>
+            </div>
+
+    `;
+
+    if (producaoPorHectareProjeto < 300) {
+        mediaProducaoProjeto = "Baixíssima";
+        class01.innerHTML = mediaProducaoProjeto
+    } else if (producaoPorHectareProjeto <= 500) {
+        mediaProducaoProjeto = "Baixa";
+        class02.innerHTML = mediaProducaoProjeto
+    } else if (producaoPorHectareProjeto <= 1200) {
+        mediaProducaoProjeto = "Média";
+        class03.innerHTML = mediaProducaoProjeto
+    } else if (producaoPorHectareProjeto <= 2500) {
+        mediaProducaoProjeto = "Alta";
+        class04.innerHTML = mediaProducaoProjeto
+    } else {
+        mediaProducaoProjeto = "Altíssima";
+        class05.innerHTML = mediaProducaoProjeto
+    }
 }
 
 function calculo_sem_sensor() {
@@ -125,5 +137,43 @@ function calculo_sem_sensor() {
 
             <p>Cada Hectare rendeu <strong>R$${rendaHectareLiquido.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong>.</p><br>
 
-            <p><strong>${mediaProducao}</strong></p><br><br>`;
+               <p><strong>Classificação da produção por hectares:</strong></p>
+
+             <div class="classificacao">
+                <div class="container">
+                    <div class="class" id="class01"></div>
+                    <div class="class" id="class02"></div>
+                    <div class="class" id="class03"></div>
+                    <div class="class" id="class04"></div>
+                    <div class="class" id="class05"></div>
+                </div>
+                <div class="numeros">
+                    <span>0 - 300</span>
+                    <span>300 - 500</span>
+                    <span>500 - 1200</span>
+                    <span>1200 - 2500</span>
+                    <span>acima de 1250</span>
+                    </div>
+            </div>
+`;
+
+         // Classificação da produtividade
+    if (producaoPorHectare < 300) {
+        mediaProducao = "Baixíssima!";
+        class01.innerHTML = mediaProducao
+    } else if (producaoPorHectare <= 500) {
+        mediaProducao = "Baixa";
+        class02.innerHTML = mediaProducao
+    } else if (producaoPorHectare <= 1200) {
+        mediaProducao = "Média";
+        class03.innerHTML = mediaProducao
+    } else if (producaoPorHectare <= 2500) {
+        mediaProducao = "Alta";
+        class04.innerHTML = mediaProducao
+    } else {
+        mediaProducao = "Altíssima";
+        class05.innerHTML = mediaProducao
+    }
+
+
 }
